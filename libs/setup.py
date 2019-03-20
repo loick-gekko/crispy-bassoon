@@ -47,8 +47,6 @@ def reqPOST(header=None, url=None, payload=None):
     if header is None or url is None or payload is None:
         print('Please provide headers, url and payload')
         sys.exit(1)
-    print('LE PAYLOAD :')
-    print(payload)
     r = requests.post(envUrl+url,headers= header,data=json.dumps(payload), verify=False)
 
     if r.status_code == 200:
@@ -67,17 +65,16 @@ print(header)
 print("--------------------------------------------------------")
 print("Try to get orgs : ")
 listOrgs = reqGet(header, 'listoforgs')
-print(listOrgs)
+#print(listOrgs)
 print("--------------------------------------------------------")
 print("Try to get org 0: ")
-print(listOrgs[0])
+#print(listOrgs[0])
 listOrgs0=listOrgs[0]
-print(listOrgs0['idOrg'])
+#print(listOrgs0['idOrg'])
 print("--------------------------------------------------------")
 print("get spec of this org")
 org = reqGet(header, 'getOrg/'+str(listOrgs0['idOrg']))
-print(org)
-
+#print(org)
 print("########################################################")
 print("################ Lets create the PP ####################")
 print("########################################################")
@@ -102,8 +99,8 @@ ppToCreate = {
         "cluster": "Homol"
     }
 }
-print("our pp look like this :")
-print (ppToCreate)
+#print("our pp look like this :")
+#print (ppToCreate)
 print("--------------------------------------------------------")
 pp= reqPOST(header,listOrgs0['nameOrg']+'/createpp',ppToCreate)
-print(pp)
+#print(pp)
